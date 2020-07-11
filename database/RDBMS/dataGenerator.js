@@ -7,19 +7,19 @@ const hasResponse = require('./posts.js').hasResponse;
 const randomNumber = require('./posts.js').randomNumber;
 const randomDate = require('./posts.js').randomDate;
 
-const readableStream = new Stream.Readable({
-  // objectMode: true,
-  read(size) {}
-});
-const file = fs.createWriteStream('./database/RDBMS/example.csv');
-// fs.createWriteStream('./database/RDBMS/example.csv');
-file.write('hello');
+// const readableStream = new Stream.Readable({
+//   // objectMode: true,
+//   read(size) {}
+// });
+// const file = fs.createWriteStream('./database/RDBMS/example.csv');
+// // fs.createWriteStream('./database/RDBMS/example.csv');
+// file.write('hello');
 
-readableStream.pipe(file);
+// readableStream.pipe(file);
 
-for (let i = 0; i < 10000000; i++) {
-  readableStream.push(`hello${i}\n`)
-}
+// for (let i = 0; i < 10000000; i++) {
+//   readableStream.push(`hello${i}\n`)
+// }
 
 
 
@@ -80,7 +80,7 @@ function writeTenMillion(writer, encoding, cb) {
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 10000000 && ok);
+    } while (i > 0 && i < 100 && ok);
 
     if (i > 0) {
       writer.once('drain', write);
@@ -92,7 +92,5 @@ function writeTenMillion(writer, encoding, cb) {
 writeTenMillion(generatePosts, 'utf-8', () => {
   generatePosts.end();
 });
-
-module.exports = randomNum;
 
 

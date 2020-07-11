@@ -4,3 +4,4 @@ bundle.js
 .config.js
 .DS_store
 images
+*.csv
