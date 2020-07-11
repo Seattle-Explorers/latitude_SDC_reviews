@@ -7,6 +7,9 @@ const hasResponse = require('./posts.js').hasResponse;
 const randomNumber = require('./posts.js').randomNumber;
 const randomDate = require('./posts.js').randomDate;
 
+// :::::Number Of Target Data:::::
+const targetDataNum = 150000000;
+
 // :::::CSV Generator:::::
 const readableStream = new Stream.Readable({
   // objectMode: true,
@@ -35,12 +38,12 @@ function writeHundredFiftyMillion(writer, encoding, cb) {
       }
 
       const data = `${id}, ${reviewer_name}, ${body}, ${date}, ${dp}, ${response}\n`;
-      if (i === 0) {
+      if (i === targetDataNum) {
         readableStream.push(data, encoding, cb);
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 150000000 && ok);
+    } while (i > 0 && i < targetDataNum && ok);
     if (i > 0) {
       writer.once('drain', write);
     }

@@ -5,13 +5,16 @@ const addPadding = require('./posts.js').addPadding;
 const average = require('./posts.js').average;
 const randomNumber = require('./posts.js').randomNumber;
 
+// :::::Number Of Target Data:::::
+const targetDataNum = 10000000;
+
 // :::::CSV Generator:::::
-const readableStream = new Stream.Readable({
+const readableStream = new Stream.Readable({ // Readable
   // objectMode: true,
   read(size) {}
 });
 
-const generatePosts = fs.createWriteStream('./database/RDBMS/postsData.csv');
+const generatePosts = fs.createWriteStream('./database/RDBMS/postsData.csv'); // Writable
 // Create Columns
 generatePosts.write('id, paddedId, locationAvg, valueAvg, accuracyAvg, commAvg, cleanAvg, checkinAvg, avg, reviewSize, userName, userDp, reviews_id\n', 'utf8');
 // Pipe writeable stream to readable stream
@@ -50,12 +53,12 @@ function writeTenMillion(writer, encoding, cb) {
 
       // This is what a single data looks like:
       const data = `${id}, ${paddedId}, ${locationAvg}, ${valueAvg}, ${accuracyAvg}, ${commAvg}, ${cleanAvg}, ${checkinAvg}, ${avg}, ${reviewSize}, ${userName}, ${userDp}, ${reviews_id}\n`;
-      if (i === 0) {
+      if (i === targetDataNum) {
         readableStream.push(data, encoding, cb);
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 10000000 && ok);
+    } while (i > 0 && i < targetDataNum && ok);
     if (i > 0) {
       writer.once('drain', write);
     }
