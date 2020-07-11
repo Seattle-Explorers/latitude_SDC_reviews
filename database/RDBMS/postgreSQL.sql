@@ -1,10 +1,3 @@
-DROP DATABASE IF EXISTS reviews;
-
-CREATE DATABASE reviews;
-
-\c reviews;
-
-
 CREATE TABLE profilepics (
   id BIGSERIAL PRIMARY KEY,
   imageIndex VARCHAR(255) NOT NULL,
