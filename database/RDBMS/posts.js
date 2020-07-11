@@ -1,11 +1,12 @@
 const { name, lorem } = require('faker');
+var fs = require('fs');
 
 // ===== HELPER FUNCTIONS =====
-const pad3 = (numString) => {
-  if (numString.length > 7 || numString.length === 0) {
+const addPadding = (numString) => {
+  if (numString.length > 8 || numString.length === 0) {
     throw new Error('The number should be between 1 and 10,000,000');
   }
-  return numString.padStart(3, '0');
+  return numString.padStart(8, '0');
 };
 
 const average = (array) => array.reduce((a, b) => a + b) / array.length;
@@ -24,7 +25,7 @@ const generateReviews = (size) => {
     const reviewObj = {};
 
     reviewObj.reviewer_name = name.firstName();
-    reviewObj.dp = randomNumber(1, 30).toString();
+    reviewObj.dp = randomNumber(1, 1000).toString();
     reviewObj.body = lorem.paragraph(1);
     reviewObj.date = randomDate(new Date(2014, 0, 1), new Date());
     if (hasResponse()) {
@@ -58,7 +59,7 @@ const seedEntry = (seed) => {
   }
 
   const [cleanAvg, commAvg, accuracyAvg, valueAvg, locationAvg, checkinAvg] = averagesFloat;
-  entry.paddedId = pad3(seed.toString());
+  entry.paddedId = addPadding(seed.toString());
   entry.userDp = randomNumber(1, 100).toString();
   entry.userName = name.firstName();
   entry.avg = average(averagesNum).toFixed(2);
@@ -73,4 +74,15 @@ const seedEntry = (seed) => {
   return entry;
 };
 
-module.exports = seedEntry;
+module.exports = {
+  addPadding,
+  average,
+  hasResponse,
+  randomNumber,
+  randomDate,
+};
+
+
+
+
+

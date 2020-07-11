@@ -7,12 +7,12 @@ import { EntryWrapper, ShiftedWrapper } from './styles/staticStyles.style';
 
 const ReviewEntry = (props) => {
   const { review, userDp, userName } = props;
-  const reviewerURL = `https://dteamdp.s3-us-west-2.amazonaws.com/pug${review.dp}.jpg`
+  const reviewerURL = `https://will-sdc-profile-pics.s3-us-west-2.amazonaws.com/pug${review.dp}.jpeg`
   const date = moment(review.date).format('MMMM YYYY');
 
   let entry;
   if (review.respond) {
-    const listerURL = `https://dteamdp.s3-us-west-2.amazonaws.com/pug${userDp}.jpg`;
+    const listerURL = `https://will-sdc-profile-pics.s3-us-west-2.amazonaws.com/pug${review.dp}.jpeg`;
     entry = (
       <div>
         <EntryWrapper>

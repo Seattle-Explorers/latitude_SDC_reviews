@@ -45,7 +45,7 @@ class PreviewEntry extends React.Component {
 
   render() {
     const { review } = this.props;
-    const imageURL = `https://dteamdp.s3-us-west-2.amazonaws.com/pug${review.dp}.jpg`
+    const imageURL = `https://will-sdc-profile-pics.s3-us-west-2.amazonaws.com/pug${review.dp}.jpeg`
     const date = moment(review.date).format('MMMM YYYY');
 
     if(this.state.readMore) {
@@ -59,7 +59,7 @@ class PreviewEntry extends React.Component {
               <Date>{date}</Date>
             </TopText>
           </TopStyle>
-          {`${this.state.display}...     `}   
+          {`${this.state.display}...     `}
           <a href='#' onClick={this.handleClick}><b>read more</b></a>
         </PreviewWrapper>
       )

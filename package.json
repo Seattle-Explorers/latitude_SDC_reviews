@@ -9,7 +9,8 @@
     "server": "nodemon server/server.js",
     "seedDB": "node ./database/seedScript.js",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "csv": "node ./database/RDBMS/dataGenerator.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "mongoose": "^5.9.19",
     "npm": "^6.14.5",
     "path": "^0.12.7",
+    "pg": "^8.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -45,6 +47,7 @@
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.5",
+    "request": "^2.88.2",
     "s3": "^4.4.0",
     "styled-components": "^5.1.1"
   },
