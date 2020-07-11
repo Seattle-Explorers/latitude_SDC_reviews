@@ -15,11 +15,11 @@ const readableStream = new Stream.Readable({
 
 const generatePosts = fs.createWriteStream('./database/RDBMS/postsData.csv');
 // Create Columns
-generatePosts.write('id, paddedId, locationAvg, valueAvg, accuracyAvg, commAvg, cleanAvg, checkinAvg, avg, reviewSize, userName, reviews_id, userDp, \n', 'utf8');
+generatePosts.write('id, paddedId, locationAvg, valueAvg, accuracyAvg, commAvg, cleanAvg, checkinAvg, avg, reviewSize, userName, userDp, reviews_id\n', 'utf8');
 // Pipe writeable stream to readable stream
 readableStream.pipe(generatePosts);
 function writeTenMillion(writer, encoding, cb) {
-  let i = 1;
+  let i = 0;
   function write() {
     let ok = true;
     do {
@@ -49,7 +49,9 @@ function writeTenMillion(writer, encoding, cb) {
       const userDp = randomNumber(1, 1000);
       const reviews_id = randomNumber(1, 150000000); // This needs to be an array, consult with Josh or Patrick
       // A single data string looks like this
-      const data = `${id}, ${paddedId}, ${locationAvg}, ${valueAvg}, ${accuracyAvg}, ${commAvg}, ${cleanAvg}, ${checkinAvg}, ${avg}, ${reviewSize}, ${userName}, ${userDp}\n`;
+
+      // This is what a single data looks like:
+      const data = `${id}, ${paddedId}, ${locationAvg}, ${valueAvg}, ${accuracyAvg}, ${commAvg}, ${cleanAvg}, ${checkinAvg}, ${avg}, ${reviewSize}, ${userName}, ${userDp}, ${reviews_id}\n`;
       if (i === 0) {
         readableStream.push(data, encoding, cb);
       } else {
