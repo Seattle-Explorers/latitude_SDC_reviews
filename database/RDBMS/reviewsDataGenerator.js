@@ -40,7 +40,7 @@ function writeHundredFiftyMillion(writer, encoding, cb) {
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 150 && ok);
+    } while (i > 0 && i < 150000000 && ok);
     if (i > 0) {
       writer.once('drain', write);
     }
