@@ -19,8 +19,9 @@ generatePosts.write('id, paddedId, locationAvg, valueAvg, accuracyAvg, commAvg, 
 // Pipe writeable stream to readable stream
 readableStream.pipe(generatePosts);
 function writeTenMillion(writer, encoding, cb) {
-  let i = 1;
+
   function write() {
+    let i = 0;
     let ok = true;
     do {
       const averagesNum = [];
@@ -29,7 +30,6 @@ function writeTenMillion(writer, encoding, cb) {
       for (let count = 1; count <= 6; count += 1) {
         const randomInt = (randomNumber(10, 50) / 10);
         const randomFloat = Number.parseFloat(randomInt).toFixed(1);
-
         averagesNum.push(randomInt);
         averagesFloat.push(randomFloat);
       }
@@ -44,7 +44,7 @@ function writeTenMillion(writer, encoding, cb) {
       const cleanAvg = cleanAverage;
       const checkinAvg = checkinAverage;
       const avg = average(averagesNum).toFixed(2);
-      const reviewSize = randomNumber(6, 10);
+      const reviewSize = randomNumber(10, 25);
       const userName = name.firstName();
       const userDp = randomNumber(1, 1000);
       const reviews_id = randomNumber(1, 150000000); // This needs to be an array, consult with Josh or Patrick
@@ -55,13 +55,14 @@ function writeTenMillion(writer, encoding, cb) {
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 10000000 && ok);
+    } while (i > 0 && i < 1000 && ok);
     if (i > 0) {
       writer.once('drain', write);
     }
   }
   write();
 }
+
 writeTenMillion(generatePosts, 'utf-8', () => {
   generatePosts.end();
 });
