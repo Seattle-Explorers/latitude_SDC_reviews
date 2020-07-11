@@ -13,56 +13,40 @@ const readableStream = new Stream.Readable({
   read(size) {}
 });
 
-const generatePosts = fs.createWriteStream('./database/RDBMS/postsData.csv');
+const generateReviews = fs.createWriteStream('./database/RDBMS/reviewsData.csv');
 // Create Columns
-generatePosts.write('id, paddedId, locationAvg, valueAvg, accuracyAvg, commAvg, cleanAvg, checkinAvg, avg, reviewSize, userName, reviews_id, userDp, \n', 'utf8');
+generateReviews.write('id, reviewer_name, body, date, dp, response\n', 'utf8');
 // Pipe writeable stream to readable stream
-readableStream.pipe(generatePosts);
-function writeTenMillion(writer, encoding, cb) {
-
+readableStream.pipe(generateReviews);
+function writeHundredFiftyMillion(writer, encoding, cb) {
+  let i = 0;
   function write() {
-    let i = 0;
     let ok = true;
     do {
-      const averagesNum = [];
-      const averagesFloat = [];
-      // const reviews_id = [];
-      for (let count = 1; count <= 6; count += 1) {
-        const randomInt = (randomNumber(10, 50) / 10);
-        const randomFloat = Number.parseFloat(randomInt).toFixed(1);
-        averagesNum.push(randomInt);
-        averagesFloat.push(randomFloat);
-      }
-      const [ cleanAverage, commAverage, accuracyAverage, valueAverage, locationAverage, checkinAverage ] = averagesFloat;
       i += 1;
       const id = i;
-      const paddedId = i.toString().padStart(8, '0');
-      const locationAvg = locationAverage;
-      const valueAvg = valueAverage;
-      const accuracyAvg = accuracyAverage;
-      const commAvg = commAverage;
-      const cleanAvg = cleanAverage;
-      const checkinAvg = checkinAverage;
-      const avg = average(averagesNum).toFixed(2);
-      const reviewSize = randomNumber(10, 25);
-      const userName = name.firstName();
-      const userDp = randomNumber(1, 1000);
-      const reviews_id = randomNumber(1, 150000000); // This needs to be an array, consult with Josh or Patrick
-      // A single data string looks like this
-      const data = `${id}, ${paddedId}, ${locationAvg}, ${valueAvg}, ${accuracyAvg}, ${commAvg}, ${cleanAvg}, ${checkinAvg}, ${avg}, ${reviewSize}, ${userName}, ${userDp}\n`;
+      const reviewer_name = name.firstName();
+      const body = lorem.paragraph(1);
+      const date = randomDate(new Date(2014, 0, 1), new Date());
+      const dp = randomNumber(1, 1000);
+      let response = null;
+      if (hasResponse()) {
+        response = lorem.paragraph(1);
+      }
+
+      const data = `${id}, ${reviewer_name}, ${body}, ${date}, ${dp}, ${response}\n`;
       if (i === 0) {
         readableStream.push(data, encoding, cb);
       } else {
         ok = readableStream.push(data, encoding);
       }
-    } while (i > 0 && i < 1000 && ok);
+    } while (i > 0 && i < 150 && ok);
     if (i > 0) {
       writer.once('drain', write);
     }
   }
   write();
 }
-
-writeTenMillion(generatePosts, 'utf-8', () => {
-  generatePosts.end();
+writeHundredFiftyMillion(generateReviews, 'utf-8', () => {
+  generateReviews.end();
 });

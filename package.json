@@ -11,7 +11,8 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "postgres": "node ./database/RDBMS/postgreSQL.sql",
-    "posts": "node ./database/RDBMS/postsDataGenerator.js"
+    "posts": "node ./database/RDBMS/postsDataGenerator.js",
+    "reviews": "node ./database/RDBMS/reviewsDataGenerator.js"
   },
   "repository": {
     "type": "git",

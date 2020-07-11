@@ -3,9 +3,7 @@ const fs = require('fs');
 const { name, lorem } = require('faker');
 const addPadding = require('./posts.js').addPadding;
 const average = require('./posts.js').average;
-const hasResponse = require('./posts.js').hasResponse;
 const randomNumber = require('./posts.js').randomNumber;
-const randomDate = require('./posts.js').randomDate;
 
 // :::::CSV Generator:::::
 const readableStream = new Stream.Readable({
