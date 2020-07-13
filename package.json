@@ -12,7 +12,8 @@
     "watch": "webpack --watch",
     "postgres": "node ./database/RDBMS/postgreSQL.sql",
     "posts": "node ./database/RDBMS/postsDataGenerator.js",
-    "reviews": "node ./database/RDBMS/reviewsDataGenerator.js"
+    "reviews": "node ./database/RDBMS/reviewsDataGenerator.js",
+    "testDB": "node ./database/RDBMS/postExp.js"
   },
   "repository": {
     "type": "git",
