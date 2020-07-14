@@ -1,17 +1,18 @@
 const Stream = require('stream')
 const fs = require('fs');
 const { name, lorem } = require('faker');
-const addPadding = require('./posts.js').addPadding;
-const average = require('./posts.js').average;
-const hasResponse = require('./posts.js').hasResponse;
-const randomNumber = require('./posts.js').randomNumber;
-const randomDate = require('./posts.js').randomDate;
+const addPadding = require('./dataHelperFunctions.js').addPadding;
+const average = require('./dataHelperFunctions.js').average;
+const hasResponse = require('./dataHelperFunctions.js').hasResponse;
+const randomNumber = require('./dataHelperFunctions.js').randomNumber;
+const randomDate = require('./dataHelperFunctions.js').randomDate;
 
 // :::::Number Of Target Data:::::
-const targetDataNum = 100000; //100K
-const targetDataNum = 150000000; //150M
-const targetDataNum = 150000000; //150M
-
+// const targetDataNum = 15000; // For Testing
+// const targetDataNum = 100000; //100K
+// const targetDataNum = 1000000; //1M
+// const targetDataNum = 8000000; //8M
+const targetDataNum = 15000000; //15M
 // const targetDataNum = 150000000; //150M
 
 // :::::CSV Generator:::::
@@ -27,11 +28,9 @@ const generateReviews = fs.createWriteStream('./database/RDBMS/reviewsData.csv')
 // Write columns
 generateReviews.write('id,reviewer_name,body,date,dp,response\n', 'utf8');
 
-// Pipe writeable stream to readable stream
-readableStream.pipe(generateReviews);
-
 // Push a number of data to the readable stream
 for (var i = 1; i <= targetDataNum; i+=1) {
+  const id = i;
   const reviewer_name = name.firstName();
   const body = lorem.paragraph(1);
   const date = randomDate(new Date(2014, 0, 1), new Date());
@@ -41,14 +40,13 @@ for (var i = 1; i <= targetDataNum; i+=1) {
     response = lorem.paragraph(1);
   }
   const data = `${id},${reviewer_name},${body},${date},${dp},${response}\n`;readableStream.push(data, 'utf8');
-}
+};
 
-
-
-
-
-
-
-
-
-
+// Pipe writeable stream to readable stream
+pipeline(readableStream, generateReviews, (err) => {
+  if (err) {
+    console.log('Pipeline failed', err);
+  } else {
+    console.log('Pipeline Succesful');
+  }
+});

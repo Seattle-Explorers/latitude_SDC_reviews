@@ -13,7 +13,7 @@
     "postgres": "node ./database/RDBMS/postgreSQL.sql",
     "posts": "node ./database/RDBMS/postsDataGenerator.js",
     "reviews": "node ./database/RDBMS/reviewsDataGenerator.js",
-    "testDB": "node ./database/RDBMS/postExp.js"
+    "images": "node ./database/RDBMS/imagesDataGenerator.js"
   },
   "repository": {
     "type": "git",
