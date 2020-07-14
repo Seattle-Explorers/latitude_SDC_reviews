@@ -8,11 +8,11 @@ const randomNumber = require('./dataHelperFunctions.js').randomNumber;
 const randomDate = require('./dataHelperFunctions.js').randomDate;
 
 // :::::Number Of Target Data:::::
-// const targetDataNum = 15000; // For Testing
+const targetDataNum = 15; // For Testing
 // const targetDataNum = 100000; //100K
 // const targetDataNum = 1000000; //1M
 // const targetDataNum = 8000000; //8M
-const targetDataNum = 15000000; //15M
+// const targetDataNum = 15000000; //15M
 // const targetDataNum = 150000000; //150M
 
 // :::::CSV Generator:::::
@@ -43,7 +43,7 @@ for (var i = 1; i <= targetDataNum; i+=1) {
 };
 
 // Pipe writeable stream to readable stream
-pipeline(readableStream, generateReviews, (err) => {
+Stream.pipeline(readableStream, generateReviews, (err) => {
   if (err) {
     console.log('Pipeline failed', err);
   } else {

@@ -7,7 +7,7 @@ const randomNumber = require('./dataHelperFunctions.js').randomNumber;
 const generateReviews = require('./dataHelperFunctions.js').generateReviews;
 
 // :::::Number Of Target Data:::::
-// const targetDataNum = 1000; // For testing
+const targetDataNum = 1000; // For testing
 // const targetDataNum = 100000; //100K
 // const targetDataNum = 1000000; //1M
 // const targetDataNum = 5000000; //5M
@@ -52,7 +52,7 @@ for (var i = 1; i <= targetDataNum; i+=1) {
   const reviewSize = randomNumber(10, 25);
   const userName = name.firstName();
   const userDp = randomNumber(1, 1000);
-  const reviews_id = generateReviews(paddedId ,reviewSize).join();
+  const reviews_id = generateReviews(reviewSize).join();
   const data = `${id},${paddedId},${locationAvg},${valueAvg},${accuracyAvg},${commAvg},${cleanAvg},${checkinAvg},${avg},${reviewSize},${userName},${userDp},${reviews_id}\n`;
   readableStream.push(data, 'utf8');
-}
+};

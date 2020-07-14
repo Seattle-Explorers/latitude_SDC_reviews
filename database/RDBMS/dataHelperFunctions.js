@@ -16,10 +16,10 @@ const randomDate = (start, end) => (
   new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 );
 
-const generateReviews = (listingID, number) => {
+const generateReviews = (number) => {
   let reviews = [];
   for (let i = 1; i <= number; i += 1) {
-    reviews.push(`${listingID}r${randomNumber(1, 150000000).toString()}`);
+    reviews.push(`${randomNumber(1, 150000000)}`);
   }
   return reviews;
 }
