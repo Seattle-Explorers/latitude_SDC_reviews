@@ -19,7 +19,7 @@ const randomDate = (start, end) => (
 const generateReviews = (listingID, number) => {
   let reviews = [];
   for (let i = 1; i <= number; i += 1) {
-    reviews.push(randomNumber(1, 150000000).toString());
+    reviews.push(`${listingID}r${randomNumber(1, 150000000).toString()}`);
   }
   return reviews;
 }

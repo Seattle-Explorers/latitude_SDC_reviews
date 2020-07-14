@@ -36,11 +36,3 @@ for (var i = 1; i <= targetDataNum; i+=1) {
 
 // Pipe writeable stream to readable stream
 readableStream.pipe(generateImages);
-
-
-
-
-
-
-
-

@@ -38,7 +38,7 @@ for (var i = 1; i <= targetDataNum; i+=1) {
   let response = null;
   if (hasResponse()) {
     response = lorem.paragraph(1);
-  }
+  };
   const data = `${id},${reviewer_name},${body},${date},${dp},${response}\n`;readableStream.push(data, 'utf8');
 };
 

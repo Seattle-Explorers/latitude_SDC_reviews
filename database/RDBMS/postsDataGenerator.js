@@ -52,7 +52,7 @@ for (var i = 1; i <= targetDataNum; i+=1) {
   const reviewSize = randomNumber(10, 25);
   const userName = name.firstName();
   const userDp = randomNumber(1, 1000);
-  const reviews_id = generateReviews(reviewSize).join();
+  const reviews_id = generateReviews(paddedId ,reviewSize).join();
   const data = `${id},${paddedId},${locationAvg},${valueAvg},${accuracyAvg},${commAvg},${cleanAvg},${checkinAvg},${avg},${reviewSize},${userName},${userDp},${reviews_id}\n`;
   readableStream.push(data, 'utf8');
 }
