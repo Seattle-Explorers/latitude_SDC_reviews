@@ -21,7 +21,7 @@ const readableStream = new Stream.Readable({
 const generateImages = fs.createWriteStream('./database/RDBMS/imagesData.csv');
 
 // Write columns
-generateImages.write('id,imageIndex,imageUrl\n', 'utf8');
+generateImages.write('id,imageUrl\n', 'utf8');
 
 
 
@@ -29,7 +29,6 @@ generateImages.write('id,imageIndex,imageUrl\n', 'utf8');
 for (var i = 1; i <= targetDataNum; i+=1) {
   const id = i;
   const imageUrl = `https://will-sdc-profile-pics.s3-us-west-2.amazonaws.com/pug${id}.jpeg`;
-
   const data = `${id},${imageUrl}\n`;
   readableStream.push(data, 'utf8');
 }
