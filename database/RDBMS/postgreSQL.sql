@@ -1,12 +1,12 @@
 CREATE TABLE profilepics (
-  id BIGSERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   imageIndex VARCHAR(255) NOT NULL,
   imageUrl VARCHAR(255) NOT NULL,
   UNIQUE(imageIndex)
 );
 
 CREATE TABLE reviews (
-  id BIGSERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   reviewer_name VARCHAR(40) NOT NULL,
   body VARCHAR(255) NOT NULL,
   date date,
