@@ -16,10 +16,10 @@ const randomDate = (start, end) => (
   new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 );
 
-const generateReviews = (number) => {
+const generateListingIDs = (firstReviewID, reviewsSize) => {
   let reviews = [];
-  for (let i = 1; i <= number; i += 1) {
-    reviews.push(`${randomNumber(1, 150000000)}`);
+  for (let i = 1; i <= reviewsSize; i += 1) {
+    reviews.push(`${firstReviewID + i}`).toString();
   }
   return reviews;
 }
@@ -45,7 +45,7 @@ module.exports = {
   hasResponse,
   randomNumber,
   randomDate,
-  generateReviews,
+  generateListingIDs,
   averages,
 };
 

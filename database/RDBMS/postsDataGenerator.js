@@ -4,14 +4,13 @@ const { name, lorem } = require('faker');
 const addPadding = require('./dataHelperFunctions.js').addPadding;
 const average = require('./dataHelperFunctions.js').average;
 const randomNumber = require('./dataHelperFunctions.js').randomNumber;
-const getReviewIDs = require('./dataHelperFunctions.js').generateReviews;
 
 // :::::Number Of Target Data:::::
-// const targetDataNum = 1000; // For testing
+const targetDataNum = 1000; // For insertion testing
 // const targetDataNum = 100000; //100K
 // const targetDataNum = 1000000; //1M
 // const targetDataNum = 5000000; //5M
-const targetDataNum = 10000000; //10M
+// const targetDataNum = 10000000; //10M
 
 // :::::CSV Generator:::::
 
@@ -19,10 +18,11 @@ const targetDataNum = 10000000; //10M
 const writableStream = fs.createWriteStream('./database/RDBMS/postsData.csv');
 
 // Write columns
-writableStream.write('id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,reviewSize,userName,userDp,reviews_id\n', 'utf8');
+writableStream.write('id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp\n', 'utf8');
 
 // Create reviews generator
 function * generateReviews(targetDataNum) {
+  // let reviewsIdCounter = 0;
   for (let i = 1; i <= targetDataNum; i += 1) {
     const averagesNum = [];
     const averagesFloat = [];
@@ -42,11 +42,12 @@ function * generateReviews(targetDataNum) {
     const cleanAvg = cleanAverage;
     const checkinAvg = checkinAverage;
     const avg = average(averagesNum).toFixed(2);
-    const reviewSize = randomNumber(10, 25);
-    const userName = name.firstName();
+    // const reviewsSize = randomNumber(10, 25);
+    const username = name.firstName();
     const userDp = randomNumber(1, 1000);
-    const reviews_id = getReviewIDs(reviewSize).join();
-    yield `${id},${paddedId},${locationAvg},${valueAvg},${accuracyAvg},${commAvg},${cleanAvg},${checkinAvg},${avg},${reviewSize},${userName},${userDp},${reviews_id}\n`;
+    // const reviews_id = `ARRAY [ ${getReviewIDs(reviewsIdCounter ,reviewsSize)} ]`;
+    // reviewsIdCounter += reviewsSize;
+    yield `${id},${paddedId},${locationAvg},${valueAvg},${accuracyAvg},${commAvg},${cleanAvg},${checkinAvg},${avg},${username},${userDp}\n`;
   }
 };
 
