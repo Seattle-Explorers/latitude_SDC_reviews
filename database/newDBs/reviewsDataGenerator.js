@@ -11,10 +11,8 @@ const generateListingIDs = require('./dataHelperFunctions.js').generateListingID
 // :::::Number Of Target Data:::::
 const targetListingDataNum = 1000; // For insertion testing
 // const targetListingDataNum = 100000; //100K
-// const targetListingDataNum = 1000000; //1M
-// const targetListingDataNum = 8000000; //8M
-// const targetListingDataNum = 15000000; //15M
-// const targetListingDataNum = 150000000; //150M
+// const targetListingDataNum = 5000000; //5M
+// const targetListingDataNum = 10000000; //10M
 
 
 // :::::CSV Generator:::::
