@@ -10,10 +10,8 @@
     "seedDB": "node ./database/seedScript.js",
     "build": "webpack",
     "watch": "webpack --watch",
-    "postgres": "node ./database/RDBMS/postgreSQL.sql",
-    "posts": "node ./database/RDBMS/postsDataGenerator.js",
-    "reviews": "node ./database/RDBMS/reviewsDataGenerator.js",
-    "images": "node ./database/RDBMS/imagesDataGenerator.js"
+    "posts": "node ./database/newDBs/postsDataGenerator.js",
+    "reviews": "node ./database/newDBs/reviewsDataGenerator.js"
   },
   "repository": {
     "type": "git",
