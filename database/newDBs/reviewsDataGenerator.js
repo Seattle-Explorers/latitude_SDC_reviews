@@ -9,19 +9,19 @@ const randomDate = require('./dataHelperFunctions.js').randomDate;
 const generateListingIDs = require('./dataHelperFunctions.js').generateListingIDs;
 
 // :::::Number Of Target Data:::::
-// const targetListingDataNum = 1000; // For insertion testing
+const targetListingDataNum = 1000; // For insertion testing
 // const targetListingDataNum = 100000; //100K
 // const targetListingDataNum = 1000000; //1M
 // const targetListingDataNum = 8000000; //8M
 // const targetListingDataNum = 15000000; //15M
-const targetListingDataNum = 150000000; //150M
+// const targetListingDataNum = 150000000; //150M
 
 
 // :::::CSV Generator:::::
 
 
 // Create writable stream
-const writableStream = fs.createWriteStream('./database/RDBMS/reviewsData.csv');
+const writableStream = fs.createWriteStream('./database/newDBs/reviewsData.csv');
 
 // Write columns
 writableStream.write('id,reviewer_name,body,date,dp,response,listingId\n', 'utf8');

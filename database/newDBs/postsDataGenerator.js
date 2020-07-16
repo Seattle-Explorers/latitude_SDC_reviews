@@ -6,16 +6,16 @@ const average = require('./dataHelperFunctions.js').average;
 const randomNumber = require('./dataHelperFunctions.js').randomNumber;
 
 // :::::Number Of Target Data:::::
-// const targetDataNum = 1000; // For insertion testing
+const targetDataNum = 1000; // For insertion testing
 // const targetDataNum = 100000; //100K
 // const targetDataNum = 1000000; //1M
 // const targetDataNum = 5000000; //5M
-const targetDataNum = 10000000; //10M
+// const targetDataNum = 10000000; //10M
 
 // :::::CSV Generator:::::
 
 // Create writable stream
-const writableStream = fs.createWriteStream('./database/RDBMS/postsData.csv');
+const writableStream = fs.createWriteStream('./database/newDBs/postsData.csv');
 
 // Write columns
 writableStream.write('id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp\n', 'utf8');
