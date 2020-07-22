@@ -5,6 +5,6 @@ bundle.js
 .DS_store
 images
 *.csv
-*.ENV
+*.env
 newrelic.js
 index.js

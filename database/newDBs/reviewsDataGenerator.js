@@ -45,7 +45,7 @@ function * generateReviews(targetListingDataNum) {
       reviewResponse = lorem.paragraph(1);
     };
     if (newReviews) {
-      reviewSize = randomNumber(5, 10);
+      reviewSize = randomNumber(4, 6);
     }
     if (reviewCounter < reviewSize) {
       reviewCounter += 1;
