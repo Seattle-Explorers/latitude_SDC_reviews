@@ -4,7 +4,7 @@
 -- SET search_path TO sdc_will;
 
 CREATE TABLE posts (
-  id VARCHAR(10) PRIMARY KEY,
+  id VARCHAR(10),
   paddedId VARCHAR(10) NOT NULL,
   locationAvg VARCHAR(10) NOT NULL,
   valueAvg VARCHAR(10) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE reviews (
-  reviewId VARCHAR(10) PRIMARY KEY,
+  reviewId VARCHAR(10),
   reviewerDp VARCHAR(5) NOT NULL,
   reviewerName VARCHAR(255) NOT NULL,
   reviewBody VARCHAR(1000) NOT NULL,
@@ -28,10 +28,14 @@ CREATE TABLE reviews (
   listingId VARCHAR(10) NOT NULL REFERENCES posts(paddedId)
 );
 
--- COPY posts (id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp) FROM '/home/wil/Desktop/hackreactor/SDC/latitude_SDC_will/database/newDBs/postsData.csv' DELIMITER ',' CSV HEADER;
+\COPY posts (id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/postsData.csv' DELIMITER ',' CSV HEADER;
 
--- COPY reviews (id,reviewer_name,body,date,dp,response,listingId) FROM '/home/wil/Desktop/hackreactor/SDC/latitude_SDC_will/database/newDBs/reviewsData.csv' DELIMITER ',' CSV HEADER;
+\COPY reviews (reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/reviewsData.csv' DELIMITER ',' CSV HEADER;
 
--- CREATE INDEX reviews_listingId_idx ON reviews (listingId);
+ALTER TABLE posts ADD PRIMARY KEY (id);
 
--- CREATE INDEX posts_paddedId_idx ON posts (paddedId);
+ALTER TABLE reviews ADD PRIMARY KEY (reviewId);
+
+CREATE INDEX reviews_listingId_idx ON reviews (listingId);
+
+CREATE INDEX posts_paddedId_idx ON posts (paddedId);
