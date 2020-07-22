@@ -28,6 +28,7 @@ CREATE TABLE reviews (
   PRIMARY KEY(listingId, reviewId)
 );
 
-COPY sdc.posts (id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp) FROM '/home/wil/Desktop/hackreactor/SDC/latitude_SDC_will/database/newDBs/postsData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+-- ::::: USE Bulk Loader :::::
+-- COPY sdc.posts (id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/postsData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
-COPY sdc.reviews (reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId) FROM '/home/wil/Desktop/hackreactor/SDC/latitude_SDC_will/database/newDBs/reviewsData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+-- COPY sdc.reviews (reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/reviewsData.csv' WITH DELIMITER=',' AND HEADER=TRUE;

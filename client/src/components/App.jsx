@@ -11,6 +11,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.listing);
+    console.log(this.state)
+
+
     axios.get(`/api/reviews/${this.props.listing}`)
       .then(({data}) => {
         this.setState({data});
@@ -21,6 +25,10 @@ class App extends React.Component {
   }
 
   render() {
+        console.log(this.props.listing);
+        console.log(this.state)
+
+
     if(this.state){
       return(
         <Switch>

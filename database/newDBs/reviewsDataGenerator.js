@@ -9,10 +9,10 @@ const randomDate = require('./dataHelperFunctions.js').randomDate;
 const generateListingIDs = require('./dataHelperFunctions.js').generateListingIDs;
 
 // :::::Number Of Target Data:::::
-const targetListingDataNum = 1000; // For insertion testing
+// const targetListingDataNum = 1000; // For insertion testing
 // const targetListingDataNum = 100000; //100K
 // const targetListingDataNum = 5000000; //5M
-// const targetListingDataNum = 10000000; //10M
+const targetListingDataNum = 10000000; //10M
 
 
 // :::::CSV Generator:::::
@@ -45,7 +45,7 @@ function * generateReviews(targetListingDataNum) {
       reviewResponse = lorem.paragraph(1);
     };
     if (newReviews) {
-      reviewSize = randomNumber(10, 25);
+      reviewSize = randomNumber(5, 10);
     }
     if (reviewCounter < reviewSize) {
       reviewCounter += 1;
@@ -57,7 +57,7 @@ function * generateReviews(targetListingDataNum) {
       newReviews = true;
     }
 
-    if (currentListingID <= 1000) {
+    if (currentListingID <= targetListingDataNum) {
       yield `${reviewId},${reviewerDp},${reviewerName},${reviewBody},${reviewDate},${reviewResponse},${listingId}\n`;
     }
   };

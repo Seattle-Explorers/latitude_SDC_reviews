@@ -19,7 +19,7 @@ const targetListingDataNum = 1000; // For insertion testing
 
 
 // Create writable stream
-const writableStream = fs.createWriteStream('./database/newDBs/reviewsData.csv');
+const writableStream = fs.createWriteStream('./database/newDBs/NoSQL/reviewsData.csv');
 
 // Write columns
 writableStream.write('reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId\n', 'utf8');
