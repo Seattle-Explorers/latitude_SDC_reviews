@@ -10,6 +10,7 @@ import Modal from './Modal.jsx'
 
 const Reviews = (props) => {
   const { data, modalOpen } = props;
+  console.log('Data from Reviews.jsx', data);
   const { reviews, ...rest } = data;
 
   return (
@@ -17,7 +18,7 @@ const Reviews = (props) => {
       <Modal overview={rest} reviews={reviews} modalOpen={modalOpen} />
       <MainOverviewWrapper><FaStar size='1em' color='#FF585D'/><MainOverviewText>{rest.avg} ({rest.reviewSize} reviews)</MainOverviewText></MainOverviewWrapper>
       <PreviewRating overview={rest} />
-      <ReviewsSummary reviews={reviews.slice(0, 6)} />
+      <ReviewsSummary reviews={reviews.slice(0, 2)} />
       <Link to='/reviews'><ModalButton> Show all {rest.reviewSize} reviews</ModalButton></Link>
     </Wrapper>
   )

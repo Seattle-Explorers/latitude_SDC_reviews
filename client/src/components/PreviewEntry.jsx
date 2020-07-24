@@ -17,29 +17,44 @@ class PreviewEntry extends React.Component {
   }
 
   componentDidMount() {
-    const { review } = this.props;
-    const { body } = review;
+  //   const { review } = this.props;
+  //   const { body } = review;
 
-    if (review.body.length > 180) {
-      this.setState({
-        readMore: true,
-        display: body.slice(0,180)
-      })
-    } else {
-      this.setState({
-        readMore: false,
-        display: body
-      })
-    }
+  //   if (review.body.length > 180) {
+  //     this.setState({
+  //       readMore: true,
+  //       display: body.slice(0,180)
+  //     })
+  //   } else {
+  //     this.setState({
+  //       readMore: false,
+  //       display: body
+  //     })
+  //   }
+  // }
+  const { review } = this.props;
+  // const { body } = review;
+
+  if (review.length > 180) {
+    this.setState({
+      readMore: true,
+      display: review.slice(0,180)
+    })
+  } else {
+    this.setState({
+      readMore: false,
+      display: review
+    })
   }
+}
 
   handleClick() {
     const { review } = this.props;
-    const { body } = review;
+    // const { body } = review;
 
     this.setState({
       readMore: false,
-      display: body
+      display: review
     })
   }
 

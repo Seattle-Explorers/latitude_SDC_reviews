@@ -4,19 +4,23 @@ require('dotenv').config();
 const host = process.env.DB_HOST;
 const password = process.env.DB_PW;
 
-const client = new Client({
+const { Pool } = require('pg')
+const pool = new Pool({
   user: 'postgres',
   password,
   host,
   database: 'sdc',
+})
+
+// the pool will emit an error on behalf of any idle clients
+// it contains if a backend error or network partition happens
+pool.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err)
+  process.exit(-1)
+})
+pool.on('connect', () => {
+  // pool.query('SET search_path TO sdc;');
+  console.log(`Connected to PostgreSQL. Host: ${host}`)
 });
 
-client.connect()
-.then(() => console.log('Connected'))
-.catch((err) => console.log('Connection Error', err));
-
-client.query('SET search_path TO sdc;')
-
-// client.query(`SELECT * FROM reviews LEFT JOIN posts ON (reviews.listingid = posts.paddedid) WHERE paddedid='09000200'`)
-
-module.exports.client = client;
+module.exports.pool = pool;

@@ -1,23 +1,8 @@
-require('newrelic')
+// require('newrelic')
 const express = require('express');
-const { client } = require('../database/newDBs/index.js');
-const app = express();
+const { pool } = require('../database/newDBs/index.js');
 
-// app.post('/api/reviews/:id', (req, res) => {
-//   Reviews.updateOne({ paddedId: req.params.id }
-//     , {$set:{}})
-//     .then((listing) => {
-//       if (listing) {
-//         res.status(200).send(listing);
-//       } else {
-//         res.sendStatus(404);
-//       }
-//     })
-//     .catch((err) => {
-//       res.sendStatus(500);
-//       error(err);
-//     });
-// });
+const app = express();
 
 app.get('/api/reviews/:id', (req, res) => {
   const sql =
@@ -26,20 +11,15 @@ app.get('/api/reviews/:id', (req, res) => {
   ON (reviews.listingid = posts.paddedid)
   WHERE paddedid = $1`;
 
-  // const sql = `SHOW search_path;`
-
   const values = [req.params.id];
-  // console.log(values);
 
-  client.query(sql, values)
+  pool.query(sql, values)
   .then((result) => {
-    // const data = JSON.stringify(result.rows);
-    // res.status(200).send(result.rows);
-    res.status(200).send();
+    res.status(200).send(result.rows);
     console.log(result.rows);
   })
   .catch((error) => {
-    // res.status(500).send();
+    res.status(500).send();
     console.log(error.stack);
   })
 });

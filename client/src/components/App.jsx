@@ -17,7 +17,26 @@ class App extends React.Component {
 
     axios.get(`/api/reviews/${this.props.listing}`)
       .then(({data}) => {
-        this.setState({data});
+        console.log('This is original data', data)
+        let reviews = [];
+        for (let i = 0; i < data.length; i++) {
+          reviews.push(data[i].reviewbody);
+        }
+        let listingData = {
+          reviews,
+          reviewSize: data.length,
+          rest: {
+            cleanAvg: data[0].cleanavg,
+            commAvg: data[0].commavg,
+            accuracyAvg: data[0].accuracyavg,
+            valueAvg: data[0].valueavg,
+            locationAvg: data[0].locationavg,
+            checkinAvg: data[0].checkinavg
+          }
+        };
+      console.log('This is listing data', listingData)
+
+        this.setState({listingData});
       })
       .catch((err) => {
         throw new Error(`cannot retrieve: ${err}`);
@@ -33,11 +52,11 @@ class App extends React.Component {
       return(
         <Switch>
           <Route path='/reviews'>
-            <Reviews modalOpen data={this.state.data}/>
+            <Reviews modalOpen data={this.state.listingData}/>
           </Route>
 
           <Route path='/'>
-            <Reviews data={this.state.data}/>
+            <Reviews data={this.state.listingData}/>
           </Route>
         </Switch>
       )
