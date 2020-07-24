@@ -9,10 +9,10 @@ const PORT = process.env.PORT || 3002;
 
 const PUBLIC = path.resolve(__dirname, '..', 'client', 'public');
 
-app.use(express.static(PUBLIC));
+app.use('/:id', express.static(PUBLIC));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'client', 'public', 'index.html'));
+app.get('/:id/reviews/bundle.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'client', 'public', 'bundle.js'));
 });
 
 app.listen(PORT, () => {

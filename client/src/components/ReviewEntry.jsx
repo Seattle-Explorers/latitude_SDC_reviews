@@ -7,6 +7,9 @@ import { EntryWrapper, ShiftedWrapper } from './styles/staticStyles.style';
 
 const ReviewEntry = (props) => {
   const { review, userDp, userName } = props;
+  console.log('review in entry', review);
+  console.log('userDP in entry', userDp);
+  console.log('userName in entry', userName)
   const reviewerURL = `https://will-sdc-profile-pics.s3-us-west-2.amazonaws.com/pug${review.dp}.jpeg`
   const date = moment(review.date).format('MMMM YYYY');
 
