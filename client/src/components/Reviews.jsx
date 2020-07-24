@@ -18,7 +18,7 @@ const Reviews = (props) => {
       <Modal overview={rest} reviews={reviews} modalOpen={modalOpen} />
       <MainOverviewWrapper><FaStar size='1em' color='#FF585D'/><MainOverviewText>{rest.avg} ({rest.reviewSize} reviews)</MainOverviewText></MainOverviewWrapper>
       <PreviewRating overview={rest} />
-      <ReviewsSummary reviews={reviews.slice(0, 2)} />
+      <ReviewsSummary reviews={reviews.slice(0, 4)} />
       <Link to='/reviews'><ModalButton> Show all {rest.reviewSize} reviews</ModalButton></Link>
     </Wrapper>
   )

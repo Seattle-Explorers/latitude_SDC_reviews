@@ -17,21 +17,6 @@ class PreviewEntry extends React.Component {
   }
 
   componentDidMount() {
-  //   const { review } = this.props;
-  //   const { body } = review;
-
-  //   if (review.body.length > 180) {
-  //     this.setState({
-  //       readMore: true,
-  //       display: body.slice(0,180)
-  //     })
-  //   } else {
-  //     this.setState({
-  //       readMore: false,
-  //       display: body
-  //     })
-  //   }
-  // }
   const { review } = this.props;
   // const { body } = review;
 
