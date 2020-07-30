@@ -1,12 +1,12 @@
 import React from 'react';
 
 // Styling imports
-import { 
-  CategoryWrapper, 
-  OverviewText, 
-  OverviewWrapper, 
+import {
+  CategoryWrapper,
+  OverviewText,
+  OverviewWrapper,
   RatingContainer,
-  RatingWrapper, 
+  RatingWrapper,
 } from './styles/staticStyles.style'
 
 import { TextContainer, RatingText } from './styles/generalUse.style';
@@ -34,21 +34,25 @@ const packetCategory = (rating) => {
 }
 
 const Rating = (props) => {
-  const { cleanAvg, commAvg, accuracyAvg, valueAvg, locationAvg, checkinAvg } = props.overview;
- 
-  const rating = [cleanAvg, accuracyAvg, commAvg, locationAvg, checkinAvg, valueAvg];
+  const { cleanavg, commavg, accuracyavg, valueavg, locationavg, checkinavg, avg } = props.overview.rest;
+
+  const { reviewSize } = props;
+
+  const rating = [cleanavg, accuracyavg, commavg, locationavg, checkinavg, valueavg];
+
+  console.log('************', props)
 
   const categoryData = packetCategory(rating);
 
   return (
     <RatingWrapper>
-      <OverviewWrapper><FaStar size='1em' color='#FF585D'/><OverviewText>{props.overview.avg} ({props.overview.reviewSize} reviews)</OverviewText></OverviewWrapper>
+      <OverviewWrapper><FaStar size='1em' color='#FF585D'/><OverviewText>{avg} ({reviewSize} reviews)</OverviewText></OverviewWrapper>
       {categoryData.map((category, idx) => (
         <CategoryWrapper key={`${category.name}`}>
           <TextContainer>{category.name}</TextContainer>
           <RatingContainer>
             <Bar margin='5px'>
-              <Bar width={`${category.percent}%`} color='black' height='100%'/> 
+              <Bar width={`${category.percent}%`} color='black' height='100%'/>
             </Bar>
             <RatingText>{category.rating}</RatingText>
           </RatingContainer>

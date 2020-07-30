@@ -7,6 +7,6 @@ const url = new URL(window.location.href);
 const path = url.pathname;
 const idSearch = /(\d{8})/;
 const listing = path.match(idSearch);
-console.log('Line 10', listing[0]);
+// console.log('Line 10', listing[0]);
 
 ReactDOM.render(<Router><App listing={listing[0]} /></Router>, document.getElementById('reviews'));

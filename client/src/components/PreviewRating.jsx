@@ -8,9 +8,12 @@ import { TextContainer, RatingText } from './styles/generalUse.style';
 import { Bar } from './styles/propStyles.style';
 
 const PreviewRating = ({ overview }) => {
-  const { cleanAvg, commAvg, accuracyAvg, valueAvg, locationAvg, checkinAvg } = overview;
+  const { cleanavg, commavg, accuracyavg, valueavg, locationavg, checkinavg } = overview.rest;
 
-  const rating = [cleanAvg, accuracyAvg, commAvg, locationAvg, checkinAvg, valueAvg];
+  console.log('!!!!!Rating From PreviewRating.jsx!!!!!', cleanavg)
+
+
+  const rating = [cleanavg, accuracyavg, commavg, locationavg, checkinavg, valueavg];
 
   const categoryData = packetCategory(rating);
 

@@ -19,19 +19,26 @@ class App extends React.Component {
       .then(({data}) => {
         console.log('This is original data', data)
         let reviews = [];
+        let reviewerNames = [];
+        let reviewerdp = [];
         for (let i = 0; i < data.length; i++) {
           reviews.push(data[i].reviewbody);
+          reviewerNames.push(data[i].reviewername);
+
         }
         let listingData = {
           reviews,
           reviewSize: data.length,
           rest: {
-            cleanAvg: data[0].cleanavg,
-            commAvg: data[0].commavg,
-            accuracyAvg: data[0].accuracyavg,
-            valueAvg: data[0].valueavg,
-            locationAvg: data[0].locationavg,
-            checkinAvg: data[0].checkinavg
+            avg: data[0].avg,
+            cleanavg: data[0].cleanavg,
+            commavg: data[0].commavg,
+            accuracyavg: data[0].accuracyavg,
+            valueavg: data[0].valueavg,
+            locationavg: data[0].locationavg,
+            checkinavg: data[0].checkinavg,
+            reviewerNames,
+            reviewerdp,
           }
         };
       console.log('This is listing data', listingData)
@@ -44,8 +51,8 @@ class App extends React.Component {
   }
 
   render() {
-        console.log(this.props.listing);
-        console.log(this.state)
+        // console.log(this.props.listing);
+        // console.log(this.state)
 
 
     if(this.state){

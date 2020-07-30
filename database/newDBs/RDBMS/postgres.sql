@@ -30,7 +30,7 @@ CREATE TABLE reviews (
 
 \COPY posts (id,paddedId,locationAvg,valueAvg,accuracyAvg,commAvg,cleanAvg,checkinAvg,avg,username,userDp) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/postsData.csv' DELIMITER ',' CSV HEADER;
 
-\COPY reviews (reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId) FROM '/home/will/Desktop/latitude_SDC_reviews/database/newDBs/reviewsData.csv' DELIMITER ',' CSV HEADER;
+\COPY reviews (reviewId,reviewerDp,reviewerName,reviewBody,reviewDate,reviewResponse,listingId) FROM '/home/wil/Desktop/hackreactor/SDC/latitude_SDC_reviews/database/newDBs/reviewsData.csv' DELIMITER ',' CSV HEADER;
 
 ALTER TABLE posts ADD PRIMARY KEY (id);
 

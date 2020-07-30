@@ -11,7 +11,9 @@ import AllReviews from './AllReviews.jsx';
 import { Rating } from './Rating.jsx'
 
 const Modal = (props) => {
-  const { overview, reviews, modalOpen } = props;
+  const { overview, reviews, modalOpen, reviewSize } = props;
+  console.log(':::::overview:::::', reviews);
+
   const history = useHistory();
   const back = () => history.replace('/');
 
@@ -20,7 +22,7 @@ const Modal = (props) => {
       <ModalWrapper onClick={(e) => e.stopPropagation()}>
         <ExitButton onClick={back}><GoX size='1.5em'/></ExitButton>
         <ReviewsWrapper>
-          <Rating overview={overview}/>
+          <Rating overview={overview} reviews={reviews} reviewSize={reviewSize}/>
           <AllReviews reviews={reviews} userDp={overview.userDp} userName={overview.userName}/>
         </ReviewsWrapper>
       </ModalWrapper>
