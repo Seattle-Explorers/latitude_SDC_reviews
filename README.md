@@ -24,7 +24,7 @@
   - **npm install**
 
 - To **Create Example Records** :
-  - **Warning** : Please disregard this warning message if you have more than 70 gigabytes of free space available on your local/virtual machine and proceed.
+  - **Warning** : Please disregard the following messages if you have more than **70 Gigabytes** of free space available on your local/virtual machine and proceed.
     > - Without modification, following commands are set to create two CSV files which are likely to contain more than 100 million records of example data combined. Said CSV files are likely to require more than minimum 30 Gigabytes of free space. Please check the available storage of your local/virtual machine before running the following commands to prevent your machine from running out of storage.
     > - **Alternatively**, you may modify postsDataGenerator.js and reviewsDataGenerator.js **after** cloning this repository to reduce the size of sample data. For your convenience, the number of records to be generated are presented at the top of each file and you can simply comment out the current **targetListingDataNum** variable and uncomment one of the provided targetListingDataNum variables, which are set to create records range from **1,000**, **100,000**, **1,000,000**, and **5,000,000**, by adding and removing **//** in front of targetListingDataNum variables. Additionally, you may modify the number associated with the targetListingDataNum variable to create a number of records that you prefer. If you choose to alter the targetListingDataNum variable, please verify that the numbers of both postsDataGenerator.js and reviewsDataGenerator.js are the same prior to running the following commands.
 
