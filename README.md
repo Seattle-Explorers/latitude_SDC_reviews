@@ -4,7 +4,7 @@
 
 # Reviews Component
 
-- **This repository** is responsible for a particular component of Latitude which provides reviews service, where customers can leave comments and the host may reply to such comments.
+- **This repository** is responsible for a particular component of Latitude which provides **reviews service**, where customers can leave comments and the host may reply to such comments.
 - A proxy application which utilizes multiple instances of this repository can be deployed to **AWS EC2** and is able to **handle production level traffic**
  - Tested with <a href="https://loader.io/" target="_blank">**Loader.io**</a> and <a href="https://newrelic.com/" target="_blank">**New Relic**</a>, said proxy instance is currently capable of handling **1,000 requests per second throughput** with less than **400 milliseconds response time**, when deployed to **AWS EC2** with the use of <a href="https://www.nginx.com/" target="_blank">**NGINX**</a>'s load balancing functionality.
 
