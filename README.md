@@ -18,7 +18,7 @@
 
 
 ## Getting Started
-> This service will soon be available on <a href="https://hub.docker.com/repository/docker/wpark95/" target="_blank">Docker Hub</a> and can be used for easier **deployment** if necessary.
+> This service will soon be available on <a href="https://hub.docker.com/repository/docker/wpark95/" target="_blank">Docker Hub</a> and can be used for easier **deployment** when necessary.
 
 - To **Install Required Dependencies** :
   - **npm install**
@@ -31,15 +31,15 @@
   - **npm run postsGen**
   - **npm run reviewsGen**
 
-- To **seed example data** to the database :
+- To **Seed Example Data** to the Database :
   - **npm run seedDB**
 
-- To compile the client bundle using **Webpack** :
+- To **Compile the Client** Bundle Using *Webpack* :
   - **npm run watch**
 
-- To start the server using **Nodemon** :
+- To **Start the Server** Using *Nodemon* :
   - **npm run server**
-    - Note: Originally, the server is set to use **port 3002**
+    > - **Note**: Originally, the server is set to use **port 3002**.
 
 
 ## Team
