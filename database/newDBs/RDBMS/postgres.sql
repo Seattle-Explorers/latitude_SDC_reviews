@@ -1,7 +1,7 @@
--- CREATE DATABASE sdc;
--- \c sdc;
--- CREATE SCHEMA sdc_will;
--- SET search_path TO sdc_will;
+CREATE DATABASE sdc;
+\c sdc;
+CREATE SCHEMA sdc;
+SET search_path TO sdc;
 
 CREATE TABLE posts (
   id VARCHAR(10),
