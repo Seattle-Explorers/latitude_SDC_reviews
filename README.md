@@ -20,6 +20,9 @@
 ## Getting Started
 > This service will soon be available on <a href="https://hub.docker.com/repository/docker/wpark95/" target="_blank">Docker Hub</a> and can be used for easier **deployment** when necessary.
 
+- **Install PostgreSQL** :
+  - Follow the instruction from official <a href="https://www.postgresql.org/download/" target="_blank">PostgreSQL documentation</a> to install the right version of PostgreSQL for your OS
+
 - To **Install Required Dependencies** :
   - **npm install**
 
