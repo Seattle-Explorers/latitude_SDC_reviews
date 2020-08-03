@@ -9,11 +9,11 @@ const PORT = process.env.PORT || 3002;
 
 const PUBLIC = path.resolve(__dirname, '..', 'client', 'public');
 
-app.use('/:id', express.static(PUBLIC));
-
-app.get('/loaderio-d4f3f13b96a549e8ec4818e271f83483/', (req, res) => {
+app.get('/loaderio-d4f3f13b96a549e8ec4818e271f83483', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'loaderio.txt'));
 });
+
+app.use('/:id', express.static(PUBLIC));
 
 app.get('/:id/reviews/bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'client', 'public', 'bundle.js'));
